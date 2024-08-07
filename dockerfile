@@ -1,8 +1,11 @@
 # Usa una imagen base de PHP 7.0-FPM
-FROM php:7.0.4-fpm
+FROM php:7.4-fpm
 
 # Instala extensiones necesarias
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql 
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 
 # Copia el código fuente al contenedor
 COPY . /var/www/html/
